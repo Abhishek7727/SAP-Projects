@@ -1,0 +1,55 @@
+_schema-version: "3.2"
+ID: Assign5
+version: 0.0.1
+modules:
+- name: Assign5-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Assign5-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comappproject1.zip
+      name: comappproject1
+      target-path: resources/
+- name: comappproject1
+  type: html5
+  path: project1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: Assign5-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: Assign5-html5-srv
+    service-plan: app-host
+- name: Assign5-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: Assign5-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo

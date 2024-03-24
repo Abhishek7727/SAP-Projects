@@ -1,0 +1,46 @@
+<mvc:View controllerName="com.app.project1.controller.View1"
+   	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	
+	xmlns="sap.m">
+   <Page showHeader="true" class="sapUiContentPadding" title="MyApp">
+		<content>
+		<Panel headerText="Sample">
+		<content>
+
+		<HBox class="sapUiSmallMargin">
+			<ComboBox id="myComboBox" 
+			class="sapUiSmallMargin"
+                placeholder="Select Item">
+                 <core:Item text="Abhishek" key="key1" />
+                 <core:Item text="Akshat" key="key2" />
+                 <core:Item text="Vartika" key="key3" />
+			     <core:Item text="Deepak" key="key4" />
+			     <core:Item text="Virat" key="key5" />
+			     <core:Item text="Thala" key="key6" />
+      </ComboBox>
+	  <DatePicker change="onDateSelect" class="sapUiSmallMargin"/>
+
+	  </HBox>
+	  </content>
+	  </Panel>
+	  <HBox>
+	  <core:Icon src="sap-icon://home" size="4rem"
+class="sapUiTinyMargin">
+
+</core:Icon>
+
+<core:Icon src="sap-icon://unfavorite" size="4rem"
+class="sapUiTinyMargin">
+</core:Icon>
+
+<core:Icon src="sap-icon://feedback" size="4rem"
+class="sapUiTinyMargin">
+</core:Icon>
+</HBox>
+
+
+
+		</content>
+	</Page>
+</mvc:View>
